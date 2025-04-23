@@ -1,6 +1,7 @@
 <?php
     require_once( 'decode_json.php' );
     $colors = $data;
+    //var_dump($colors[0]);
 ?>
 
 <!DOCTYPE html>
@@ -16,39 +17,21 @@
 
 <div class="container" style="margin-top:50px;">
     <div class="row">
-
-        <div class="col-sm-4" style="color:#ff0000;">
+        
+        <?php
+        foreach($colors as $c) {
+        ?>
+            <div class="col-sm-4" style=color:<?php echo $c->hexString; ?>>
             <div class="card border mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Red</h5>
-                    <p class="card-text">hex: #ff0000</p>
-                    <p class="card-text">rgb: (255, 0, 0)</p>
-                    <p class="card-text">hsl: (0, 100, 50)</p>
+                    <h5 class="card-title"><?php echo $c->name; ?></h5>
+                    <p class="card-text">hex: <?php echo  $c->hexString; ?></p>
+                    <p class="card-text">rgb: (<?php echo  $c->rgb->r ;?>, <?php echo $c->rgb->g; ?>, <?php echo $c->rgb->b; ?>)</p>
+                    <p class="card-text">hsl: (<?php echo  $c->hsl->h ;?>, <?php echo $c->hsl->s; ?>, <?php echo $c->hsl->l; ?>)</p>
                 </div>
             </div>
-        </div><!--/.col-->
-  
-        <div class="col-sm-4" style="color:#008000;">
-            <div class="card border mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Green</h5>
-                    <p class="card-text">hex: #008000</p>
-                    <p class="card-text">rgb: (0, 128, 0)</p>
-                    <p class="card-text">hsl: (120, 100, 25)</p>
-                </div>
-            </div>
-        </div><!--/.col-->
-
-        <div class="col-sm-4" style="color:#0000ff;">
-            <div class="card border mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">Blue</h5>
-                    <p class="card-text">hex: #0000ff</p>
-                    <p class="card-text">rgb: (0, 0, 255)</p>
-                    <p class="card-text">hsl: (240, 100, 50)</p>
-                </div>
-            </div>
-        </div><!--/.col-->
+        </div>
+            <?php } ?>
 
     </div><!--/.row-->
 </div><!--/.container-->
